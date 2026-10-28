@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SportMap — Sportolási lehetőségek Székesfehérváron</title>
-<meta name="description" content="SportMap: események és fix sportolási lehetőségek (konditermek, uszoda, box, nyitott tornatermek) Székesfehérváron — egy térképen." />
+<meta name="description" content="SportMap: események és fix sportolási lehetőségek (konditermek, uszoda, box, nyitott tornatermek) Székesfehérváron — egy térképen. Bárki létrehozhat, a szervező mindig látszik." />
 <style>
   :root {
     --bg: #0B1220;
@@ -70,6 +70,15 @@
     border-radius: 999px; padding: 9px 16px; font-size: 0.92rem; color: var(--text);
   }
 
+  .create {
+    background: linear-gradient(135deg, rgba(244,63,94,0.16), rgba(244,63,94,0.04));
+    border: 1px solid rgba(244,63,94,0.4);
+    border-radius: 20px; padding: 44px 36px; text-align: center;
+  }
+  .create h2 { margin-bottom: 8px; }
+  .create p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 1.05rem; }
+  .create .cta { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
   .download { background: var(--bg2); border: 1px solid var(--stroke); border-radius: 20px; padding: 36px; text-align: center; }
   .download h2 { margin-bottom: 8px; }
   .download p { color: var(--muted); margin-bottom: 24px; }
@@ -86,6 +95,7 @@
     <nav>
       <a href="#mi">Mi ez?</a>
       <a href="#funkciok">Funkciók</a>
+      <a href="#letrehozas">Létrehozás</a>
       <a href="#sportagak">Sportágak</a>
       <a href="#letoltes">Letöltés</a>
     </nav>
@@ -97,8 +107,8 @@
     <h1>Sportolási lehetőségek<br>Székesfehérváron, <span>egy térképen</span></h1>
     <p>Egyszeri események és rendszeres (fix) sportolási lehetőségek — konditermek, uszoda, box, nyitott tornatermek és még sok más — egy helyen, sportág-szűrővel.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#letoltes">Letöltés</a>
-      <a class="btn btn-ghost" href="#mi">Tudj meg többet</a>
+      <a class="btn btn-primary" href="#letrehozas">Hozz létre eseményt</a>
+      <a class="btn btn-ghost" href="#letoltes">Letöltés</a>
     </div>
   </section>
 
@@ -118,7 +128,7 @@
       <div class="card">
         <div class="icon">📅</div>
         <h3>Események</h3>
-        <p>Hozz létre egyszeri eseményt (foci, kosár, futás…), hívd meg a többieket, és lásd, ki megy.</p>
+        <p>Hozz létre egyszeri eseményt (foci, kosár, futás…), hívd meg a többieket — a szervező mindig látszik, tudod, ki van a pályán.</p>
       </div>
       <div class="card">
         <div class="icon">🔁</div>
@@ -129,6 +139,18 @@
         <div class="icon">👥</div>
         <h3>Csatlakozás</h3>
         <p>Egy kattintással csatlakozz, és tudd meg, kik jönnek még.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="letrehozas">
+    <div class="create">
+      <span class="badge">Ingyenes</span>
+      <h2>Bárki létrehozhat</h2>
+      <p>Szervezel egy focimeccset, edzést vagy bármilyen sportprogramot? Hozd létre egy perc alatt, és mindenki látja a térképen. A szervező mindig látszik — így mindenki tudja, ki van a pályán, és kivel játszik.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#letoltes">Hozz létre eseményt</a>
+        <a class="btn btn-ghost" href="#letoltes">Fix sportolási lehetőség</a>
       </div>
     </div>
   </section>
