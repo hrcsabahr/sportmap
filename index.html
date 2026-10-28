@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SportMap — Sportolási lehetőségek Székesfehérváron</title>
+<meta name="description" content="SportMap: események és fix sportolási lehetőségek (konditermek, uszoda, box, nyitott tornatermek) Székesfehérváron — egy térképen." />
+<style>
+  :root {
+    --bg: #0B1220;
+    --bg2: #111827;
+    --card: #1A2234;
+    --text: #F4F4F5;
+    --muted: #9CA3AF;
+    --accent: #F43F5E;
+    --stroke: #2E2E33;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  header {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--stroke);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  .nav a { color: var(--muted); font-size: 0.9rem; margin-left: 20px; }
+  .nav a:hover { color: var(--text); }
+
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 1.15rem; max-width: 620px; margin: 18px auto 0; }
+  .hero .cta { margin-top: 32px; display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-block; padding: 14px 26px; border-radius: 12px;
+    font-weight: 700; font-size: 1rem;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--stroke); }
+  .btn-ghost:hover { border-color: var(--accent); }
+
+  section { padding: 60px 0; }
+  h2 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .lead { color: var(--muted); max-width: 640px; margin-bottom: 32px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--stroke);
+    border-radius: 16px; padding: 22px;
+  }
+  .card .icon { font-size: 2rem; margin-bottom: 12px; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    background: var(--card); border: 1px solid var(--stroke);
+    border-radius: 999px; padding: 9px 16px; font-size: 0.92rem; color: var(--text);
+  }
+
+  .download { background: var(--bg2); border: 1px solid var(--stroke); border-radius: 20px; padding: 36px; text-align: center; }
+  .download h2 { margin-bottom: 8px; }
+  .download p { color: var(--muted); margin-bottom: 24px; }
+  .badge { display: inline-block; background: rgba(244,63,94,0.12); color: var(--accent); border-radius: 8px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; }
+
+  footer { border-top: 1px solid var(--stroke); padding: 32px 0; color: var(--muted); font-size: 0.85rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Sport<span>Map</span></div>
+    <nav>
+      <a href="#mi">Mi ez?</a>
+      <a href="#funkciok">Funkciók</a>
+      <a href="#sportagak">Sportágak</a>
+      <a href="#letoltes">Letöltés</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>Sportolási lehetőségek<br>Székesfehérváron, <span>egy térképen</span></h1>
+    <p>Egyszeri események és rendszeres (fix) sportolási lehetőségek — konditermek, uszoda, box, nyitott tornatermek és még sok más — egy helyen, sportág-szűrővel.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#letoltes">Letöltés</a>
+      <a class="btn btn-ghost" href="#mi">Tudj meg többet</a>
+    </div>
+  </section>
+
+  <section id="mi">
+    <h2>Mi ez?</h2>
+    <p class="lead">A SportMap megmutatja, mi történik körülötted: milyen sporteseményekre lehet csatlakozni, és milyen fix, heti rendszerességű edzések érhetők el a városban — minden a térképen, a szűrőkkel gyorsan átlátható.</p>
+  </section>
+
+  <section id="funkciok">
+    <h2>Funkciók</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🗺️</div>
+        <h3>Térkép</h3>
+        <p>Minden lehetőség egy térképen, sportág-szűrővel — azonnal látod, mi van a közelben.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>Események</h3>
+        <p>Hozz létre egyszeri eseményt (foci, kosár, futás…), hívd meg a többieket, és lásd, ki megy.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔁</div>
+        <h3>Fix sportolási lehetőségek</h3>
+        <p>Heti rendszerességű edzések: konditermek, uszoda, box, nyitott tornatermek, nordic walking.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👥</div>
+        <h3>Csatlakozás</h3>
+        <p>Egy kattintással csatlakozz, és tudd meg, kik jönnek még.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sportagak">
+    <h2>Sportágak</h2>
+    <p class="lead">Több mint 30 valódi Székesfehérvár-helyszín, 14 sportágban.</p>
+    <div class="chips">
+      <span class="chip">⚽ Foci</span>
+      <span class="chip">🏀 Kosárlabda</span>
+      <span class="chip">🏐 Röplabda</span>
+      <span class="chip">🤾 Kézilabda</span>
+      <span class="chip">🏸 Tollaslabda</span>
+      <span class="chip">🏓 Asztalitenisz</span>
+      <span class="chip">🎾 Tenisz</span>
+      <span class="chip">🏃 Futás</span>
+      <span class="chip">🥾 Túrázás / Nordic walking</span>
+      <span class="chip">🏋️ Konditerem</span>
+      <span class="chip">🏊 Úszás</span>
+      <span class="chip">🥊 Box</span>
+      <span class="chip">🥋 Küzdősport</span>
+      <span class="chip">🚴 Kerékpár</span>
+    </div>
+  </section>
+
+  <section id="letoltes">
+    <div class="download">
+      <span class="badge">Hamarosan</span>
+      <h2>Letöltés</h2>
+      <p>Az Android verzió készül, a Play Store-os megjelenés folyamatban. Addig tesztelői elérés egyeztetés után.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:hello@sportmap.hu">Érdekel — értesíts</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">© 2026 SportMap · Székesfehérvár</div>
+</footer>
+
+</body>
+</html>
