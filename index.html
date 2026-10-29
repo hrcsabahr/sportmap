@@ -65,28 +65,22 @@
   .btn-ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .hero { padding: 72px 0 84px; text-align: center; }
+  .hero { padding: 72px 0 48px; text-align: center; }
   .hero h1 { font-size: clamp(2.6rem, 6vw, 4.1rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px; }
   .hero h1 .hl { color: var(--accent); }
   .hero p { color: var(--muted); font-size: 1.25rem; max-width: 620px; margin: 0 auto 32px; }
   .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-  .map-card {
-    margin-top: 44px;
-    border-radius: 26px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    text-align: left;
-  }
-  #map { height: 520px; width: 100%; background: #E8ECF1; }
+  .map-hero { width: 100%; }
+  #map { height: 560px; width: 100%; background: #E8ECF1; }
   .map-caption {
-    padding: 14px 20px;
     background: #fff;
     color: var(--muted);
     font-size: 0.95rem;
     font-weight: 700;
     border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
+  .map-caption .wrap { padding-top: 14px; padding-bottom: 14px; }
   .sport-marker { background: transparent; border: none; }
   .pin {
     width: 44px; height: 44px; border-radius: 50%;
@@ -180,11 +174,16 @@
       <a class="btn btn-primary" href="#letrehozas">Hozz létre eseményt</a>
       <a class="btn btn-ghost" href="#letoltes">Letöltés</a>
     </div>
-    <div class="map-card">
-      <div id="map"></div>
-      <div class="map-caption">28 helyszín Székesfehérváron · kattints egy ikonra a részletekért</div>
-    </div>
   </section>
+
+</div>
+
+<section class="map-hero">
+  <div id="map"></div>
+  <div class="map-caption"><div class="wrap">28 helyszín Székesfehérváron · kattints egy ikonra a részletekért</div></div>
+</section>
+
+<div class="wrap">
 
   <section id="mi">
     <span class="kicker">Mi ez</span>
