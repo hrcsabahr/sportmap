@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
   :root {
     --bg: #FFFFFF;
@@ -64,16 +65,41 @@
   .btn-ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .hero { padding: 72px 0 84px; }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+  .hero { padding: 72px 0 84px; text-align: center; }
   .hero h1 { font-size: clamp(2.6rem, 6vw, 4.1rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px; }
   .hero h1 .hl { color: var(--accent); }
-  .hero p { color: var(--muted); font-size: 1.25rem; max-width: 480px; margin-bottom: 32px; }
-  .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; }
-  .hero-media { display: grid; gap: 14px; }
-  .hero-media img { border-radius: 22px; object-fit: cover; width: 100%; box-shadow: var(--shadow); }
-  .hero-media .tall { height: 300px; }
-  .hero-media .short { height: 160px; }
+  .hero p { color: var(--muted); font-size: 1.25rem; max-width: 620px; margin: 0 auto 32px; }
+  .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .map-card {
+    margin-top: 44px;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  #map { height: 520px; width: 100%; background: #E8ECF1; }
+  .map-caption {
+    padding: 14px 20px;
+    background: #fff;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-top: 1px solid var(--border);
+  }
+  .sport-marker { background: transparent; border: none; }
+  .pin {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #fff; border: 3px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; line-height: 1;
+    box-shadow: 0 6px 16px rgba(30,35,48,0.28);
+    transition: transform 0.12s ease;
+  }
+  .pin:hover { transform: scale(1.12); }
+  .popup-name { font-weight: 900; font-size: 1rem; margin-bottom: 6px; }
+  .popup-sport { display: inline-block; background: var(--bg-soft); border-radius: 999px; padding: 3px 10px; margin: 2px 4px 2px 0; font-size: 0.85rem; font-weight: 700; }
+  .leaflet-popup-content { font-family: "Nunito", sans-serif; }
 
   .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
   .strip img { border-radius: 18px; object-fit: cover; height: 170px; width: 100%; box-shadow: var(--shadow); }
@@ -120,8 +146,8 @@
 
   @media (max-width: 860px) {
     .nav-links { display: none; }
-    .hero-grid, .why-grid { grid-template-columns: 1fr; }
-    .hero-media .tall { height: 220px; }
+    .why-grid { grid-template-columns: 1fr; }
+    #map { height: 400px; }
     .strip { grid-template-columns: 1fr; }
     .strip img { height: 200px; }
     .steps { grid-template-columns: 1fr; }
@@ -148,19 +174,15 @@
 <div class="wrap">
 
   <section class="hero">
-    <div class="hero-grid">
-      <div>
-        <h1>Székesfehérvár sportja,<br><span class="hl">egy térképen</span></h1>
-        <p>Meccsek, edzések, konditermek, uszoda. Nézd meg, mi van a közeledben, és csatlakozz egy gombnyomással.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#letrehozas">Hozz létre eseményt</a>
-          <a class="btn btn-ghost" href="#letoltes">Letöltés</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img class="tall" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80" alt="Focilabda a pályán" />
-        <img class="short" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80" alt="Edzőterem" />
-      </div>
+    <h1>Székesfehérvár sportja,<br><span class="hl">egy térképen</span></h1>
+    <p>Meccsek, edzések, konditermek, uszoda. Nézd meg, mi van a közeledben, és csatlakozz egy gombnyomással.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#letrehozas">Hozz létre eseményt</a>
+      <a class="btn btn-ghost" href="#letoltes">Letöltés</a>
+    </div>
+    <div class="map-card">
+      <div id="map"></div>
+      <div class="map-caption">28 helyszín Székesfehérváron · kattints egy ikonra a részletekért</div>
     </div>
   </section>
 
@@ -285,7 +307,7 @@
 
   <section id="sportagak">
     <span class="kicker">Sportágak</span>
-    <h2>30+ helyszín már fent van,<br><span class="hl">14 sportágból</span></h2>
+    <h2>28 helyszín már fent van,<br><span class="hl">12 sportágból</span></h2>
     <div class="chips">
       <span class="chip">⚽ Foci</span>
       <span class="chip">🏀 Kosárlabda</span>
@@ -293,14 +315,12 @@
       <span class="chip">🤾 Kézilabda</span>
       <span class="chip">🏸 Tollaslabda</span>
       <span class="chip">🏓 Asztalitenisz</span>
-      <span class="chip">🎾 Tenisz</span>
       <span class="chip">🏃 Futás</span>
       <span class="chip">🥾 Nordic walking</span>
       <span class="chip">🏋️ Konditerem</span>
       <span class="chip">🏊 Úszás</span>
       <span class="chip">🥊 Box</span>
       <span class="chip">🥋 Küzdősport</span>
-      <span class="chip">🚴 Kerékpár</span>
     </div>
   </section>
 
@@ -319,6 +339,88 @@
 <footer>
   <div class="wrap">© 2026 SportMap · Székesfehérvár</div>
 </footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const SPORTS = {
+    Football: { e: "⚽", hu: "Foci" },
+    Basketball: { e: "🏀", hu: "Kosárlabda" },
+    Volleyball: { e: "🏐", hu: "Röplabda" },
+    Handball: { e: "🤾", hu: "Kézilabda" },
+    Badminton: { e: "🏸", hu: "Tollaslabda" },
+    TableTennis: { e: "🏓", hu: "Asztalitenisz" },
+    Tennis: { e: "🎾", hu: "Tenisz" },
+    Running: { e: "🏃", hu: "Futás" },
+    Hiking: { e: "🥾", hu: "Nordic walking" },
+    Gym: { e: "🏋️", hu: "Konditerem" },
+    Swimming: { e: "🏊", hu: "Úszás" },
+    Boxing: { e: "🥊", hu: "Box" },
+    MartialArts: { e: "🥋", hu: "Küzdősport" },
+    Cycling: { e: "🚴", hu: "Kerékpár" }
+  };
+
+  const LOCATIONS = [
+    { lat: 47.17, lng: 18.413, n: "Alsóvárosi rét, Szabadidős Park fogadóépület", s: ["Hiking", "Running"] },
+    { lat: 47.18361, lng: 18.402, n: "Bakony utca 2", s: ["Gym"] },
+    { lat: 47.18468, lng: 18.40927, n: "Balatoni út 17", s: ["Gym"] },
+    { lat: 47.16433, lng: 18.40395, n: "Balatoni út 44-46", s: ["Gym"] },
+    { lat: 47.17057, lng: 18.40521, n: "Balatoni út 53", s: ["Gym"] },
+    { lat: 47.20502, lng: 18.43709, n: "Berényi út 101 (Videoton Oktatási Központ)", s: ["Boxing"] },
+    { lat: 47.19499, lng: 18.43561, n: "Budai út 154", s: ["Gym"] },
+    { lat: 47.18668, lng: 18.41848, n: "Bugát Pál Technikum, Gyümölcs utca 15.", s: ["Volleyball"] },
+    { lat: 47.18928, lng: 18.41986, n: "Deák Ferenc u. 6", s: ["Gym"] },
+    { lat: 47.18802, lng: 18.4204, n: "Deák Ferenc utca 13", s: ["MartialArts"] },
+    { lat: 47.20615, lng: 18.40702, n: "Ezredéves Ált. Iskola, Havranek J. út 4.", s: ["Basketball"] },
+    { lat: 47.20489, lng: 18.38495, n: "Feketehegy-Szárazréti Közösségi Ház, Farkasvermi út 2.", s: ["Hiking"] },
+    { lat: 47.20523, lng: 18.42949, n: "Gugásvölgyi utca 4", s: ["Gym"] },
+    { lat: 47.18595, lng: 18.42002, n: "Gyümölcs u. 38", s: ["Gym"] },
+    { lat: 47.19196, lng: 18.43184, n: "Hadiárva u. 10", s: ["Gym"] },
+    { lat: 47.19231, lng: 18.39597, n: "István Király Ált. Isk., Kelemen B. u. 30/a", s: ["Basketball", "Football", "Volleyball"] },
+    { lat: 47.1851, lng: 18.41592, n: "Kálvin János tér 2", s: ["Boxing"] },
+    { lat: 47.19752, lng: 18.44227, n: "Lehel u. 36-38", s: ["Gym"] },
+    { lat: 47.18723, lng: 18.41737, n: "Munkácsy Mihály Ált. Isk., Munkácsy u. 10.", s: ["Football"] },
+    { lat: 47.19554, lng: 18.40315, n: "Mészöly Géza u. 4", s: ["Swimming"] },
+    { lat: 47.1933, lng: 18.41742, n: "Németh László Ált. Isk., Salétrom utca 4-6.", s: ["TableTennis"] },
+    { lat: 47.16644, lng: 18.40939, n: "Sóstói tanösvény, Alsóvárosi Közösségi Tér", s: ["Hiking"] },
+    { lat: 47.19175, lng: 18.4016, n: "Tobak utca", s: ["Boxing"] },
+    { lat: 47.19143, lng: 18.41347, n: "Távirda u. 9", s: ["Gym"] },
+    { lat: 47.19976, lng: 18.40188, n: "Tóparti Gimnázium, Fürdősor 5.", s: ["Badminton"] },
+    { lat: 47.19136, lng: 18.40417, n: "Vasvári Pál Ált. Isk., György Oszkár tér 3.", s: ["Badminton", "Handball"] },
+    { lat: 47.19699, lng: 18.40879, n: "Zichy liget, Zenepavilon", s: ["Hiking"] },
+    { lat: 47.18734, lng: 18.4578, n: "Árpád Technikum, Seregélyesi út 88-90.", s: ["Badminton"] }
+  ];
+
+  const map = L.map("map", { scrollWheelZoom: false });
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> közreműködők'
+  }).addTo(map);
+
+  const markerIcon = function (emoji) {
+    return L.divIcon({
+      className: "sport-marker",
+      html: '<div class="pin">' + emoji + '</div>',
+      iconSize: [44, 44],
+      iconAnchor: [22, 22],
+      popupAnchor: [0, -18]
+    });
+  };
+
+  const bounds = [];
+  LOCATIONS.forEach(function (loc) {
+    bounds.push([loc.lat, loc.lng]);
+    const primary = SPORTS[loc.s[0]] ? SPORTS[loc.s[0]].e : "📍";
+    const chips = loc.s.map(function (s) {
+      const m = SPORTS[s] || { e: "📍", hu: s };
+      return '<span class="popup-sport">' + m.e + " " + m.hu + '</span>';
+    }).join("");
+    L.marker([loc.lat, loc.lng], { icon: markerIcon(primary) })
+      .addTo(map)
+      .bindPopup('<div class="popup-name">' + loc.n + '</div>' + chips);
+  });
+
+  map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+</script>
 
 </body>
 </html>
