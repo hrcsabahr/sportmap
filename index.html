@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SportMap — Székesfehérvár sportja, egy térképen</title>
 <meta name="description" content="SportMap: meccsek, edzések, konditermek és uszoda Székesfehérváron, egy térképen. Bárki felteheti a saját eseményét, ingyen." />
+<link rel="canonical" href="https://www.sportmap.hu/" />
+<meta name="theme-color" content="#F43F5E" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23F43F5E'/%3E%3Cpath d='M50 24c-11 0-18 9-18 18 0 12 18 30 18 30s18-18 18-30c0-9-7-18-18-18z' fill='white'/%3E%3Ccircle cx='50' cy='42' r='6' fill='%23F43F5E'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SportMap" />
+<meta property="og:title" content="SportMap — Székesfehérvár sportja, egy térképen" />
+<meta property="og:description" content="Meccsek, edzések, konditermek és uszoda Székesfehérváron, egy térképen. Bárki felteheti a saját eseményét, ingyen." />
+<meta property="og:url" content="https://www.sportmap.hu/" />
+<meta property="og:locale" content="hu_HU" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SportMap — Székesfehérvár sportja, egy térképen" />
+<meta name="twitter:description" content="Meccsek, edzések, konditermek és uszoda Székesfehérváron, egy térképen. Bárki felteheti a saját eseményét, ingyen." />
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
@@ -47,6 +62,13 @@
   .nav-links { display: flex; gap: 26px; }
   .nav-links a { color: var(--ink); font-weight: 700; font-size: 1.1rem; }
   .nav-links a:hover { color: var(--accent); }
+  .nav-toggle {
+    display: none;
+    background: none; border: none;
+    font-size: 1.9rem; line-height: 1;
+    color: var(--ink); cursor: pointer;
+    padding: 4px 10px;
+  }
 
   section { padding: 104px 0; }
   h2 { font-size: clamp(2.5rem, 5vw, 3.6rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 16px; }
@@ -140,7 +162,19 @@
 
   @media (max-width: 860px) {
     .wrap { padding: 0 20px; }
-    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      flex-direction: column;
+      gap: 4px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px 18px;
+      box-shadow: 0 10px 30px rgba(30,35,48,0.12);
+    }
+    .nav-links.open { display: flex; }
     .why-grid { grid-template-columns: 1fr; }
     #map { height: 400px; }
     .strip { grid-template-columns: 1fr; }
@@ -150,13 +184,24 @@
     .persona img { width: 100%; height: 200px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SportMap",
+  "url": "https://www.sportmap.hu/",
+  "description": "Meccsek, edzések és sporthelyszínek Székesfehérváron, egy térképen.",
+  "areaServed": { "@type": "City", "name": "Székesfehérvár" }
+}
+</script>
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
     <div class="logo">Sport<span class="dot">Map</span></div>
-    <nav class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav-links">☰</button>
+    <nav class="nav-links" id="nav-links">
       <a href="#mi">Mi ez</a>
       <a href="#kinek">Kinek jó</a>
       <a href="#miert">Miért jó</a>
@@ -342,6 +387,22 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
+<script>
   const SPORTS = {
     Football: { e: "⚽", hu: "Foci" },
     Basketball: { e: "🏀", hu: "Kosárlabda" },
@@ -390,7 +451,7 @@
     { lat: 47.18734, lng: 18.4578, n: "Árpád Technikum, Seregélyesi út 88-90.", s: ["Badminton"] }
   ];
 
-  const map = L.map("map", { scrollWheelZoom: false });
+  const map = L.map("map", { scrollWheelZoom: false, dragging: !L.Browser.mobile });
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> közreműködők'
