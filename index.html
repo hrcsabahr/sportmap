@@ -175,6 +175,9 @@
   }
 
   footer { border-top: 1px solid var(--border); padding: 36px 0; color: var(--muted); font-size: 0.95rem; text-align: center; }
+  .foot-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; font-weight: 700; }
+  .foot-links a { color: var(--muted); }
+  .foot-links a:hover { color: var(--accent); }
 
   @media (max-width: 860px) {
     .wrap { padding: 0 20px; }
@@ -418,7 +421,13 @@
 </div>
 
 <footer>
-  <div class="wrap">© 2026 SportMap · Székesfehérvár</div>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="privacy.html">Adatvédelmi tájékoztató</a>
+      <a href="fioktorles.html">Fióktörlés</a>
+    </div>
+    <div>© 2026 SportMap · Székesfehérvár</div>
+  </div>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
