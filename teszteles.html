@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tesztelési útmutató — SportMap</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#fff; --ink:#1E2330; --muted:#5A6272; --accent:#F43F5E; --border:#ECE9EE; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.7; font-size:18px; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:760px; margin:0 auto; padding:48px 24px 80px; }
+  h1 { font-size:2.2rem; font-weight:900; letter-spacing:-0.02em; line-height:1.15; margin-bottom:8px; }
+  h1 .dot { color:var(--accent); }
+  .sub { color:var(--muted); margin-bottom:8px; }
+  h2 { font-size:1.4rem; font-weight:800; margin:32px 0 10px; letter-spacing:-0.01em; }
+  p, li { color:var(--muted); }
+  p { margin-bottom:14px; }
+  a { color:var(--accent); }
+  .top { display:inline-block; margin-bottom:24px; font-weight:700; color:var(--muted); text-decoration:none; }
+  .top:hover { color:var(--accent); }
+  .steps { background:#FFF5F6; border:1px solid var(--border); border-radius:16px; padding:28px 28px; margin-bottom:20px; }
+  .steps ol { margin:0 0 0 22px; }
+  .steps li { margin-bottom:14px; }
+  .steps li b { color:var(--ink); }
+  .report { background:#F0FDF4; border:1px solid #BBF7D0; border-radius:16px; padding:24px 28px; }
+  .report p { margin-bottom:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="top" href="/">← Vissza a SportMap oldalra</a>
+  <h1>Tesztelési <span class="dot">útmutató</span></h1>
+  <div class="sub">Köszönjük, hogy segítesz kipróbálni a SportMapet! Csináld végig az alábbi feladatokat. Ha közben bármi furcsa, vagy nem úgy működik, ahogy várnád, írd meg nekünk.</div>
+
+  <h2>A feladatok</h2>
+  <div class="steps">
+    <ol>
+      <li><b>Jelentkezz be.</b> Próbáld ki az email+jelszó belépést és a Google belépést is.</li>
+      <li><b>Nézd meg a térképet.</b> Nagyíts, kattints a sport ikonokra, és szűrj sportágra a felső legördülővel.</li>
+      <li><b>Nyiss meg egy fix edzést.</b> A borostyánsárga 🔁 tűk a heti rendszeres edzések. Nézd meg a részleteiket.</li>
+      <li><b>Hozz létre egy eseményt.</b> Tegyél le egy pint a térképen, adj neki címet, időpontot és létszámot. Így a többi tesztelőnek is lesz mihez csatlakoznia.</li>
+      <li><b>Csatlakozz valaki más eseményéhez.</b> Keresd a rózsaszín tűket, és nyomd meg a Csatlakozom az eseményhez gombot.</li>
+      <li><b>Lépj ki, ahová csatlakoztál.</b> A gomb ilyenkor Kilépés az eseményből.</li>
+      <li><b>Törölj egy saját eseményt.</b></li>
+      <li><b>Nézd meg a profilodat.</b> Ott vannak a csatlakozott és a szervezett eseményeid.</li>
+    </ol>
+  </div>
+
+  <h2>Mit jelezz nekünk</h2>
+  <div class="report">
+    <p>Ha valami nem úgy működik, ahogy vártad, vagy furcsán néz ki, írd meg röviden:</p>
+    <p>• mit akartál csinálni,<br>• mit csináltál,<br>• és mi történt helyette.</p>
+    <p>Képernyőfotót is küldhetsz. Írj ide: <a href="mailto:it_helper@outlook.com?subject=Teszt%20visszajelz%C3%A9s">it_helper@outlook.com</a></p>
+  </div>
+</div>
+</body>
+</html>
