@@ -166,6 +166,9 @@
   }
   .tester p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 1.15rem; }
   .tester .email { margin-top: 20px; font-weight: 800; font-size: 1.1rem; color: var(--ink); }
+  .req { list-style: none; text-align: left; max-width: 560px; margin: 0 auto 28px; padding: 0; }
+  .req li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; color: var(--muted); font-size: 1.08rem; line-height: 1.5; }
+  .req li::before { content: "\2713"; color: var(--green); font-weight: 900; flex: 0 0 auto; }
 
   .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 32px; }
   .shot img {
@@ -412,7 +415,14 @@
     <div class="tester">
       <span class="kicker">Csatlakozz</span>
       <h2>Tesztelőket keresünk</h2>
-      <p>Szeretnéd elsőként kipróbálni a SportMap appot? Jelentkezz tesztelőnek, és segíts, hogy jó legyen, mielőtt mindenki letöltheti.</p>
+      <p>Mielőtt mindenki letöltheti, szeretnénk, ha néhányan élesben kipróbálnák. Csak akkor jelentkezz, ha az alábbiak mind rád illenek.</p>
+      <ul class="req">
+        <li>Van Android telefonod. Az app egyelőre csak Androidon fut.</li>
+        <li>Van Google-fiókod. Ez kell a tesztverzió letöltéséhez és a belépéshez.</li>
+        <li>Székesfehérváron vagy a környékén mozogsz. Ott vannak a meccsek és az edzések, amiket látni fogsz.</li>
+        <li>Van pár heted kipróbálni. Ha hibát találsz vagy van ötleted, megírod nekünk.</li>
+      </ul>
+      <p>Mind igaz rád? Írj, és küldjük a tesztverziót.</p>
       <a class="btn btn-primary" href="mailto:it_helper@outlook.com?subject=Tesztel%C5%91nek%20jelentkezem">Jelentkezem tesztelőnek</a>
       <p class="email">it_helper@outlook.com</p>
     </div>
