@@ -152,7 +152,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Sportolási lehetőségek Székesfehérváron",
-  "numberOfItems": 28,
+  "numberOfItems": 34,
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Alsóvárosi rét, Szabadidős Park fogadóépület"},
     {"@type":"ListItem","position":2,"name":"Bakony utca 2"},
@@ -181,7 +181,13 @@
     {"@type":"ListItem","position":25,"name":"Tóparti Gimnázium, Fürdősor 5."},
     {"@type":"ListItem","position":26,"name":"Vasvári Pál Ált. Isk., György Oszkár tér 3."},
     {"@type":"ListItem","position":27,"name":"Zichy liget, Zenepavilon"},
-    {"@type":"ListItem","position":28,"name":"Árpád Technikum, Seregélyesi út 88-90."}
+    {"@type":"ListItem","position":28,"name":"Árpád Technikum, Seregélyesi út 88-90."},
+    {"@type":"ListItem","position":29,"name":"Honvéd Szondi György SE – Birkózó Szakosztály"},
+    {"@type":"ListItem","position":30,"name":"Ifj. Ocskay Gábor Jégcsarnok (Fehérvár AV19)"},
+    {"@type":"ListItem","position":31,"name":"Székesfehérvári Judo Sport Club (Vasvári Pál Gimnázium)"},
+    {"@type":"ListItem","position":32,"name":"Kiskút Tenisz Klub"},
+    {"@type":"ListItem","position":33,"name":"Alba Regia Atlétikai Klub (ARAK) – Bregyó"},
+    {"@type":"ListItem","position":34,"name":"Bringacross pumpapálya (Bregyó, kiserdő)"}
   ]
 }
 </script>
@@ -202,15 +208,15 @@
     <h1>Sportolási lehetőségek<br><span class="hl">Székesfehérváron</span></h1>
     <p>Meccsek, edzések, konditermek, uszoda és pályák — minden, amit a városban találsz, egy térképen és egy listában. Ez az első város, ahol a SportMap elindult.</p>
     <div class="stats">
-      <div class="stat"><div class="num">28</div><div class="lbl">helyszín</div></div>
-      <div class="stat"><div class="num">12</div><div class="lbl">sportág</div></div>
+      <div class="stat"><div class="num">34</div><div class="lbl">helyszín</div></div>
+      <div class="stat"><div class="num">18</div><div class="lbl">sportág</div></div>
     </div>
   </section>
 
   <section id="helyszinek">
     <span class="kicker">Helyszínek</span>
     <h2>Helyszínek és sportágak<br><span class="hl">Székesfehérváron</span></h2>
-    <p class="lead">28 helyszín 12 sportágból. Kattints a térképen egy ikonra a részletekért, vagy nézd végig a listát alább.</p>
+    <p class="lead">34 helyszín 18 sportágból. Kattints a térképen egy ikonra a részletekért, vagy nézd végig a listát alább.</p>
   </section>
 
   <div class="filter-bar">
@@ -227,6 +233,12 @@
     <button type="button" class="filter-chip" data-sport="TableTennis">🏓 Asztalitenisz</button>
     <button type="button" class="filter-chip" data-sport="Badminton">🏸 Tollaslabda</button>
     <button type="button" class="filter-chip" data-sport="Handball">🤾 Kézilabda</button>
+    <button type="button" class="filter-chip" data-sport="Tennis">🎾 Tenisz</button>
+    <button type="button" class="filter-chip" data-sport="Cycling">🚴 Kerékpár</button>
+    <button type="button" class="filter-chip" data-sport="Wrestling">🤼 Birkózás</button>
+    <button type="button" class="filter-chip" data-sport="IceHockey">🏒 Jégkorong</button>
+    <button type="button" class="filter-chip" data-sport="Judo">🥋 Judo</button>
+    <button type="button" class="filter-chip" data-sport="Athletics">🎽 Atlétika</button>
   </div>
 
 </div>
@@ -269,6 +281,12 @@
       <div class="venue" data-sports="Badminton Handball"><h3>Vasvári Pál Ált. Isk., György Oszkár tér 3.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span><span class="venue-tag">Kézilabda</span></div></div>
       <div class="venue" data-sports="Hiking"><h3>Zichy liget, Zenepavilon</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
       <div class="venue" data-sports="Badminton"><h3>Árpád Technikum, Seregélyesi út 88–90.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span></div></div>
+      <div class="venue" data-sports="Wrestling"><h3>Honvéd Szondi György SE – Birkózó Szakosztály</h3><div class="venue-tags"><span class="venue-tag">Birkózás</span></div></div>
+      <div class="venue" data-sports="IceHockey"><h3>Ifj. Ocskay Gábor Jégcsarnok (Fehérvár AV19)</h3><div class="venue-tags"><span class="venue-tag">Jégkorong</span></div></div>
+      <div class="venue" data-sports="Judo"><h3>Székesfehérvári Judo Sport Club (Vasvári Pál Gimnázium)</h3><div class="venue-tags"><span class="venue-tag">Judo</span></div></div>
+      <div class="venue" data-sports="Tennis"><h3>Kiskút Tenisz Klub</h3><div class="venue-tags"><span class="venue-tag">Tenisz</span></div></div>
+      <div class="venue" data-sports="Athletics"><h3>Alba Regia Atlétikai Klub (ARAK) – Bregyó</h3><div class="venue-tags"><span class="venue-tag">Atlétika</span></div></div>
+      <div class="venue" data-sports="Cycling"><h3>Bringacross pumpapálya (Bregyó, kiserdő)</h3><div class="venue-tags"><span class="venue-tag">Kerékpár</span></div></div>
     </div>
   </section>
 
@@ -305,6 +323,10 @@
     Swimming: { e: "🏊", hu: "Úszás" },
     Boxing: { e: "🥊", hu: "Box" },
     MartialArts: { e: "🥋", hu: "Küzdősport" },
+    Wrestling: { e: "🤼", hu: "Birkózás" },
+    IceHockey: { e: "🏒", hu: "Jégkorong" },
+    Judo: { e: "🥋", hu: "Judo" },
+    Athletics: { e: "🎽", hu: "Atlétika" },
     Cycling: { e: "🚴", hu: "Kerékpár" }
   };
 
@@ -336,7 +358,13 @@
     { lat: 47.19976, lng: 18.40188, n: "Tóparti Gimnázium, Fürdősor 5.", s: ["Badminton"] },
     { lat: 47.19136, lng: 18.40417, n: "Vasvári Pál Ált. Isk., György Oszkár tér 3.", s: ["Badminton", "Handball"] },
     { lat: 47.19699, lng: 18.40879, n: "Zichy liget, Zenepavilon", s: ["Hiking"] },
-    { lat: 47.18734, lng: 18.4578, n: "Árpád Technikum, Seregélyesi út 88-90.", s: ["Badminton"] }
+    { lat: 47.18734, lng: 18.4578, n: "Árpád Technikum, Seregélyesi út 88-90.", s: ["Badminton"] },
+    { lat: 47.19793, lng: 18.40734, n: "Honvéd Szondi György SE – Birkózó Szakosztály", s: ["Wrestling"] },
+    { lat: 47.18645, lng: 18.44208, n: "Ifj. Ocskay Gábor Jégcsarnok (Fehérvár AV19)", s: ["IceHockey"] },
+    { lat: 47.18286, lng: 18.42181, n: "Székesfehérvári Judo Sport Club (Vasvári Pál Gimnázium)", s: ["Judo"] },
+    { lat: 47.20978, lng: 18.41534, n: "Kiskút Tenisz Klub", s: ["Tennis"] },
+    { lat: 47.20392, lng: 18.40023, n: "Alba Regia Atlétikai Klub (ARAK) – Bregyó", s: ["Athletics"] },
+    { lat: 47.2015, lng: 18.3955, n: "Bringacross pumpapálya (Bregyó, kiserdő)", s: ["Cycling"] }
   ];
 
   const map = L.map("map", { scrollWheelZoom: false, dragging: !L.Browser.mobile });
