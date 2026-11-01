@@ -72,6 +72,21 @@
   .stat .num { font-size: 2rem; font-weight: 900; color: var(--accent); line-height: 1; }
   .stat .lbl { color: var(--muted); font-weight: 700; font-size: 0.95rem; }
 
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 8px 0 24px; }
+  .filter-chip {
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
+  }
+  .filter-chip:hover { border-color: var(--accent); }
+  .filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   .venues { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .venue {
     background: var(--bg-soft);
@@ -198,6 +213,22 @@
     <p class="lead">28 helyszín 12 sportágból. Kattints a térképen egy ikonra a részletekért, vagy nézd végig a listát alább.</p>
   </section>
 
+  <div class="filter-bar">
+    <button type="button" class="filter-chip active" data-sport="">Mind</button>
+    <button type="button" class="filter-chip" data-sport="Gym">🏋️ Konditerem</button>
+    <button type="button" class="filter-chip" data-sport="Hiking">🥾 Nordic walking</button>
+    <button type="button" class="filter-chip" data-sport="Running">🏃 Futás</button>
+    <button type="button" class="filter-chip" data-sport="Boxing">🥊 Box</button>
+    <button type="button" class="filter-chip" data-sport="Volleyball">🏐 Röplabda</button>
+    <button type="button" class="filter-chip" data-sport="MartialArts">🥋 Küzdősport</button>
+    <button type="button" class="filter-chip" data-sport="Basketball">🏀 Kosárlabda</button>
+    <button type="button" class="filter-chip" data-sport="Football">⚽ Foci</button>
+    <button type="button" class="filter-chip" data-sport="Swimming">🏊 Úszás</button>
+    <button type="button" class="filter-chip" data-sport="TableTennis">🏓 Asztalitenisz</button>
+    <button type="button" class="filter-chip" data-sport="Badminton">🏸 Tollaslabda</button>
+    <button type="button" class="filter-chip" data-sport="Handball">🤾 Kézilabda</button>
+  </div>
+
 </div>
 
 <section id="terkep">
@@ -210,34 +241,34 @@
 
   <section id="lista">
     <div class="venues">
-      <div class="venue"><h3>Alsóvárosi rét, Szabadidős Park fogadóépület</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span><span class="venue-tag">Futás</span></div></div>
-      <div class="venue"><h3>Bakony utca 2</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Balatoni út 17</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Balatoni út 44–46</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Balatoni út 53</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Berényi út 101 (Videoton Oktatási Központ)</h3><div class="venue-tags"><span class="venue-tag">Box</span></div></div>
-      <div class="venue"><h3>Budai út 154</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Bugát Pál Technikum, Gyümölcs utca 15.</h3><div class="venue-tags"><span class="venue-tag">Röplabda</span></div></div>
-      <div class="venue"><h3>Deák Ferenc u. 6</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Deák Ferenc utca 13</h3><div class="venue-tags"><span class="venue-tag">Küzdősport</span></div></div>
-      <div class="venue"><h3>Ezredéves Ált. Iskola, Havranek J. út 4.</h3><div class="venue-tags"><span class="venue-tag">Kosárlabda</span></div></div>
-      <div class="venue"><h3>Feketehegy-Szárazréti Közösségi Ház, Farkasvermi út 2.</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
-      <div class="venue"><h3>Gugásvölgyi utca 4</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Gyümölcs u. 38</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Hadiárva u. 10</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>István Király Ált. Isk., Kelemen B. u. 30/a</h3><div class="venue-tags"><span class="venue-tag">Kosárlabda</span><span class="venue-tag">Foci</span><span class="venue-tag">Röplabda</span></div></div>
-      <div class="venue"><h3>Kálvin János tér 2</h3><div class="venue-tags"><span class="venue-tag">Box</span></div></div>
-      <div class="venue"><h3>Lehel u. 36–38</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Munkácsy Mihály Ált. Isk., Munkácsy u. 10.</h3><div class="venue-tags"><span class="venue-tag">Foci</span></div></div>
-      <div class="venue"><h3>Mészöly Géza u. 4</h3><div class="venue-tags"><span class="venue-tag">Úszás</span></div></div>
-      <div class="venue"><h3>Németh László Ált. Isk., Salétrom utca 4–6.</h3><div class="venue-tags"><span class="venue-tag">Asztalitenisz</span></div></div>
-      <div class="venue"><h3>Sóstói tanösvény, Alsóvárosi Közösségi Tér</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
-      <div class="venue"><h3>Tobak utca</h3><div class="venue-tags"><span class="venue-tag">Box</span></div></div>
-      <div class="venue"><h3>Távirda u. 9</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
-      <div class="venue"><h3>Tóparti Gimnázium, Fürdősor 5.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span></div></div>
-      <div class="venue"><h3>Vasvári Pál Ált. Isk., György Oszkár tér 3.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span><span class="venue-tag">Kézilabda</span></div></div>
-      <div class="venue"><h3>Zichy liget, Zenepavilon</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
-      <div class="venue"><h3>Árpád Technikum, Seregélyesi út 88–90.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span></div></div>
+      <div class="venue" data-sports="Hiking Running"><h3>Alsóvárosi rét, Szabadidős Park fogadóépület</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span><span class="venue-tag">Futás</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Bakony utca 2</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Balatoni út 17</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Balatoni út 44–46</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Balatoni út 53</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Boxing"><h3>Berényi út 101 (Videoton Oktatási Központ)</h3><div class="venue-tags"><span class="venue-tag">Box</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Budai út 154</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Volleyball"><h3>Bugát Pál Technikum, Gyümölcs utca 15.</h3><div class="venue-tags"><span class="venue-tag">Röplabda</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Deák Ferenc u. 6</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="MartialArts"><h3>Deák Ferenc utca 13</h3><div class="venue-tags"><span class="venue-tag">Küzdősport</span></div></div>
+      <div class="venue" data-sports="Basketball"><h3>Ezredéves Ált. Iskola, Havranek J. út 4.</h3><div class="venue-tags"><span class="venue-tag">Kosárlabda</span></div></div>
+      <div class="venue" data-sports="Hiking"><h3>Feketehegy-Szárazréti Közösségi Ház, Farkasvermi út 2.</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Gugásvölgyi utca 4</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Gyümölcs u. 38</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Hadiárva u. 10</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Basketball Football Volleyball"><h3>István Király Ált. Isk., Kelemen B. u. 30/a</h3><div class="venue-tags"><span class="venue-tag">Kosárlabda</span><span class="venue-tag">Foci</span><span class="venue-tag">Röplabda</span></div></div>
+      <div class="venue" data-sports="Boxing"><h3>Kálvin János tér 2</h3><div class="venue-tags"><span class="venue-tag">Box</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Lehel u. 36–38</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Football"><h3>Munkácsy Mihály Ált. Isk., Munkácsy u. 10.</h3><div class="venue-tags"><span class="venue-tag">Foci</span></div></div>
+      <div class="venue" data-sports="Swimming"><h3>Mészöly Géza u. 4</h3><div class="venue-tags"><span class="venue-tag">Úszás</span></div></div>
+      <div class="venue" data-sports="TableTennis"><h3>Németh László Ált. Isk., Salétrom utca 4–6.</h3><div class="venue-tags"><span class="venue-tag">Asztalitenisz</span></div></div>
+      <div class="venue" data-sports="Hiking"><h3>Sóstói tanösvény, Alsóvárosi Közösségi Tér</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
+      <div class="venue" data-sports="Boxing"><h3>Tobak utca</h3><div class="venue-tags"><span class="venue-tag">Box</span></div></div>
+      <div class="venue" data-sports="Gym"><h3>Távirda u. 9</h3><div class="venue-tags"><span class="venue-tag">Konditerem</span></div></div>
+      <div class="venue" data-sports="Badminton"><h3>Tóparti Gimnázium, Fürdősor 5.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span></div></div>
+      <div class="venue" data-sports="Badminton Handball"><h3>Vasvári Pál Ált. Isk., György Oszkár tér 3.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span><span class="venue-tag">Kézilabda</span></div></div>
+      <div class="venue" data-sports="Hiking"><h3>Zichy liget, Zenepavilon</h3><div class="venue-tags"><span class="venue-tag">Nordic walking</span></div></div>
+      <div class="venue" data-sports="Badminton"><h3>Árpád Technikum, Seregélyesi út 88–90.</h3><div class="venue-tags"><span class="venue-tag">Tollaslabda</span></div></div>
     </div>
   </section>
 
@@ -324,20 +355,62 @@
     });
   };
 
-  const bounds = [];
+  const markers = [];
   LOCATIONS.forEach(function (loc) {
-    bounds.push([loc.lat, loc.lng]);
     const primary = SPORTS[loc.s[0]] ? SPORTS[loc.s[0]].e : "📍";
     const chips = loc.s.map(function (s) {
       const m = SPORTS[s] || { e: "📍", hu: s };
       return '<span class="popup-sport">' + m.e + " " + m.hu + '</span>';
     }).join("");
-    L.marker([loc.lat, loc.lng], { icon: markerIcon(primary) })
-      .addTo(map)
+    const marker = L.marker([loc.lat, loc.lng], { icon: markerIcon(primary) })
       .bindPopup('<div class="popup-name">' + loc.n + '</div>' + chips);
+    markers.push({ loc: loc, marker: marker });
   });
 
-  map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+  function showAllMarkers() {
+    markers.forEach(function (m) {
+      if (!map.hasLayer(m.marker)) m.marker.addTo(map);
+    });
+    const b = markers.map(function (m) { return [m.loc.lat, m.loc.lng]; });
+    map.fitBounds(b, { padding: [40, 40], maxZoom: 15 });
+  }
+
+  function applySportFilter(sport) {
+    const visible = [];
+    markers.forEach(function (m) {
+      const show = !sport || m.loc.s.indexOf(sport) !== -1;
+      if (show) {
+        if (!map.hasLayer(m.marker)) m.marker.addTo(map);
+        visible.push([m.loc.lat, m.loc.lng]);
+      } else {
+        if (map.hasLayer(m.marker)) map.removeLayer(m.marker);
+      }
+    });
+    if (visible.length) {
+      map.fitBounds(visible, { padding: [40, 40], maxZoom: 15 });
+    }
+  }
+
+  showAllMarkers();
+
+  const filterChips = document.querySelectorAll('.filter-chip');
+  const venueCards = document.querySelectorAll('.venue');
+  filterChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      filterChips.forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      const sport = chip.getAttribute('data-sport');
+      venueCards.forEach(function (card) {
+        const sports = (card.getAttribute('data-sports') || '').split(' ');
+        if (!sport || sports.indexOf(sport) !== -1) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      applySportFilter(sport);
+    });
+  });
 </script>
 
 </body>
