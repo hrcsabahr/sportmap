@@ -93,6 +93,25 @@
   .hero h1 .hl { color: var(--accent); }
   .hero p { color: var(--muted); font-size: 1.45rem; max-width: 820px; margin: 0 auto 36px; }
   .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .city-bar { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 0 22px; flex-wrap: wrap; }
+  .city-label { font-weight: 800; color: var(--muted); font-size: 1.05rem; }
+  .city-select {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ink);
+    background-color: #fff;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    padding: 13px 46px 13px 24px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10' viewBox='0 0 16 10'%3E%3Cpath d='M2 2l6 6 6-6' fill='none' stroke='%235A6272' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+  }
+  .city-select:hover, .city-select:focus { border-color: var(--accent); outline: none; }
   .map-hero { width: 100%; }
   #map { height: 660px; width: 100%; background: #E8ECF1; }
   .map-caption {
@@ -250,6 +269,12 @@
 </div>
 
 <section class="map-hero">
+  <div class="wrap city-bar">
+    <label class="city-label" for="city-select">Város:</label>
+    <select id="city-select" class="city-select" onchange="if (this.value) location.href = this.value;">
+      <option value="szekesfehervar.html" selected>Székesfehérvár</option>
+    </select>
+  </div>
   <div id="map"></div>
   <div class="map-caption"><div class="wrap"><a href="szekesfehervar.html">28 helyszín Székesfehérváron</a> · kattints egy ikonra a részletekért</div></div>
 </section>
