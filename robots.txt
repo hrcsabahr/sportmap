@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sportmap.hu/sitemap.xml
+Sitemap: https://sportmap.hu/sitemap.xml
